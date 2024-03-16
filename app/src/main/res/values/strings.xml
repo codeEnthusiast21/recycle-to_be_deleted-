@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">sat_akele</string>
+    <string name="app_name">recycler_view1,2</string>
+    <string name="news_content">The therapeutic value of our relationship with our pets, particularly dogs, is increasingly recognised by researchers. Cats can be wonderful
+        too – but dogs have been domesticated by humans for much longer, and, as even the most devoted cat lover will admit, dogs are far easier to train for companionship.
+        Most cats, as we know, are admirable for entirely different reasons. Marion Janner, a mental health campaigner and all-round animal lover, says that dogs teach us a
+        whole range of lessons. “Dogs love us unconditionally. They’re the ultimate in equal opportunities – entirely indifferent to race, gender, star sign, CV, clothes size
+        or ability to throw cool moves on the dance floor. The simplicity and depth of this love is a continuous joy, along with the health benefits of daily walks and the
+        social delights of chats with other dog walkers. They teach kids to be responsible, altruistic and compassionate and, valuably but sadly, how to cope when someone you
+        love dies.
+    </string>
+
+
 </resources>

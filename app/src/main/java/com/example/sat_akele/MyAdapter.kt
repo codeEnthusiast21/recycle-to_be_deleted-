@@ -11,30 +11,55 @@ import com.example.sat_akele.databinding.ActivityMainBinding
 import com.google.android.material.imageview.ShapeableImageView
 
 class MyAdapter(var newsarrayList: ArrayList<News>, var context : Activity) :
-    RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+    RecyclerView.Adapter<MyAdapter.MyViewHolder>(){
+    private lateinit var myListener: onItemClickListener
 
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyAdapter.MyViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.eachitem,parent,false)
-        return MyViewHolder(itemView)
+    interface onItemClickListener {
+        fun onItemClicking(pos: Int)
     }
 
+    fun setOnItemClickListener(listener: onItemClickListener) {
+        myListener = listener
+    }
 
+    // to create new view instances
+    //when layout manager fails to find a suitable view for each item
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int ): MyAdapter.MyViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.eachitem, parent, false)
+        return MyViewHolder(itemView,myListener)
+    }
+
+    // populate items with data
     override fun onBindViewHolder(holder: MyAdapter.MyViewHolder, position: Int) {
         var currentItem = newsarrayList[position]
         holder.hTitle.text = currentItem.newsH
-        holder.hImage.setImageResource(currentItem.newsI )
+        holder.hImage.setImageResource(currentItem.newsI)
+
+
 
     }
 
+    //how many list items are present in your array
     override fun getItemCount(): Int {
         return newsarrayList.size
     }
-    class MyViewHolder (itemView: View):RecyclerView.ViewHolder(itemView) {
+
+    /// it holds  the view so views are not crated everytime , memory is saved
+    class MyViewHolder(itemView: View, listener: onItemClickListener) :
+        RecyclerView.ViewHolder(itemView) {
         val hTitle = itemView.findViewById<TextView>(R.id.title)
         val hImage = itemView.findViewById<ShapeableImageView>(R.id.image)
 
+
+
+        init {
+            itemView.setOnClickListener {
+                listener.onItemClicking(adapterPosition)
+
+            }
+
+
+        }
+
     }
-
 }
-
